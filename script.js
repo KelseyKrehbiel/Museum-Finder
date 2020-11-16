@@ -1,6 +1,6 @@
 "use strict";
 
-const myKey = 'c6e13536-98fd-4945-9835-bdd4ad77bf31'
+const myKey = '5ae2e3f221c38a28845f05b6dab77e254cd36150a97eb1ef1812beef'
 
 function buildAddressRequest(stateList,results){
     //build request URL for getting facility addresses
@@ -8,10 +8,12 @@ function buildAddressRequest(stateList,results){
     let requestURL = "https://ridb.recreation.gov/api/v1/facilityaddresses?";
 
     const options = {
+        mode: 'cors',
         headers: {
           "Accept": "application/json",
           "apiKey": myKey
         }
+        
     };
     let encodedStateList = stateList.replace(/\s/g, "");
     //convert commas to %2C for URL
@@ -20,19 +22,24 @@ function buildAddressRequest(stateList,results){
     requestURL += `query=${encodedStateList}&limit=${results}`;
 
     //console.log(requestURL);
-    getFacilityAddresses(requestURL,options)
+    apiGet(options)
 }
 
-function getFacilityAddresses(requestURL,options) {
-    fetch("https://ridb.recreation.gov/api/v1/facilityaddresses?query=az&limit=3&offset=0",options)
-    .then(response => response.json())
-    .then(responseJson => {
-        console.log(responseJson);
-        displayResults(responseJson.data)
-    })
+function apiGet(query) {
+    return new Promise(function(resolve, reject) {
+      var otmAPI =
+        "https://api.opentripmap.com/0.1/en/places/" +
+        'geoname' +
+        "?apikey=" +
+        myKey+ "&name=arizona";
 
-    //extract facility IDs from address list
-
+      fetch(otmAPI)
+        .then(response => response.json())
+        .then(data => resolve(data))
+        .catch(function(err) {
+          console.log("Fetch Error :-S", err);
+        });
+    });
   }
 
   function requestFacilityData(){
@@ -52,7 +59,7 @@ function getFacilityAddresses(requestURL,options) {
   function displayResults() {
     console.log();
     //Clear the previous results
-    
+
     //For each facility make a list item
     //Facility Name
     //Description
