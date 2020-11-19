@@ -7,31 +7,32 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
-        <title>Recreaction Finder</title> <!--browser window title text-->
+        <title>Museum Finder</title> <!--browser window title text-->
         <link href="main.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <header>
-            <h1>Recreaction Finder</h1>
+            <h1>Museum Finder</h1>
             <p>
-                Find federal lands, historic sites, museums, 
-                and other attractions/resources.
+                Find museums, aquariums, galleries, and zoos in your area!
             </p>
         </header>
         <main>
             <form id="form">
-                <label for="state-list">State Code(s)</label>
-                <input type="text" id="state-list" name="state-list" placeholder="AZ" required>
-                <label for="result-size">Results per page</label>
-                <input type="number" id="result-size" name="result-size" min="1" max="50" value="10">
+                <label for="location">Location</label>
+                <input type="text" id="location" name="location" placeholder="Arizona" required>
+                <label for="search-radius-kilometers">Search Radius (kilometers)</label>
+                <input type="number" id="search-radius" name="search-radius" min="1" max="50" value="3">
                 <button type="submit" id="submit-button" name="submit-button">Submit</button>
             </form>
+            <div id="map"></div>
+
 
         </main>
         <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-        <script src="script.js"></script>
+        <script src="script.js" type="module"></script>
         <footer>
-            <h3>Data gathered from https://ridb.recreation.gov/</h3>
+            <h3>Data gathered from https://opentripmap.io</h3>
         </footer>
     </body>
 </html>
