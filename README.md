@@ -1,2 +1,2 @@
-# siteTemplate
-basic website template
+# Museum Finder
+
