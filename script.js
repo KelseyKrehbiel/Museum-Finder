@@ -1,12 +1,7 @@
-import {google} from "https://maps.googleapis.com/maps/api/js?key=AIzaSyB1tEvB-iDEeyFXyjp2FC122VPDzXrWqcE&callback=initMap&libraries=&v=weekly";
+//import { google } from "https://maps.googleapis.com/maps/api/js?key=AIzaSyB1tEvB-iDEeyFXyjp2FC122VPDzXrWqcE&callback=initMap&libraries=&v=weekly";
 "use strict";
 
-
 const otmKey = '5ae2e3f221c38a28845f05b6dab77e254cd36150a97eb1ef1812beef'
-
-const mapKey="AIzaSyB1tEvB-iDEeyFXyjp2FC122VPDzXrWqcE"
-
-
 
 
 function getCoordinates(location,radius) {
@@ -38,14 +33,14 @@ function getCoordinates(location,radius) {
     //use lat and lon to get list of museums in area
     let placesURL = "https://api.opentripmap.com/0.1/en/places/radius?"+
       `radius=${radius}`+
-      "&limit=5"+
+      "&limit=15"+
       `&lon=${coordinates.lon}&lat=${coordinates.lat}`+
       "&kinds=museums"+
       "&format=json"+
       `&apikey=${otmKey}`;
     console.log(placesURL);
     
-    getPlaceMap(coordinates); 
+    //getPlaceMap(coordinates); 
 
     fetch(placesURL)
     .then(response => response.json())
@@ -91,13 +86,15 @@ function getCoordinates(location,radius) {
     //Address
     //Website
     //Google Map
-    $('main').append('<ul class="place-list"></ul>')
+    $('main').append('<ol class="place-list"></ol>')
     data.forEach(element => {
       let itemName = element.name;
       if (itemName != ""){
         let xid = element.xid;
         let placeURL = `https://api.opentripmap.com/0.1/en/places/xid/${xid}?apikey=${otmKey}`
         //console.log(placeURL);
+        //delay calls to stay in api limit
+        
         fetch(placeURL)
         .then(response => response.json())
         .then(pdata => {
@@ -111,20 +108,26 @@ function getCoordinates(location,radius) {
           let wikiExtract = pdata.wikipedia_extracts.text;
         
         //add items to list
-        $('ul').append(`<li>
+        $('ol').append(`<li>
                           <h2>${itemName}</h2>
                           <h3>${address}</h3>
                           <p>${wikiExtract}</p>
+                          <div id="map">map goes here</div>
                         </li>`);
-        });
-      }
-          
-        
-    })
+        })
+        .then(sleeper(1000));
+      } 
+    });
 
     //Add it to the DOM
 
 
+  }
+
+  function sleeper(ms) {
+    return function(x) {
+      return new Promise(resolve => setTimeout(() => resolve(x), ms));
+    };
   }
   
   function watchForm() {
