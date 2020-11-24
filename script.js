@@ -1,4 +1,4 @@
-//import { google } from "https://maps.googleapis.com/maps/api/js?key=AIzaSyB1tEvB-iDEeyFXyjp2FC122VPDzXrWqcE&callback=initMap&libraries=&v=weekly";
+import { google } from "https://maps.googleapis.com/maps/api/js?key=AIzaSyB1tEvB-iDEeyFXyjp2FC122VPDzXrWqcE&callback=initMap&libraries=&v=weekly";
 "use strict";
 
 const otmKey = '5ae2e3f221c38a28845f05b6dab77e254cd36150a97eb1ef1812beef'
