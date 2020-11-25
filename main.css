@@ -1,52 +1,133 @@
-main {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 15pt;
-}
-
-/*header style*/
-header nav {
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+    width: 70%;
+    margin: auto;
+  }
+  
+  /*header style*/
+  header {
+      display: flex;
+      flex-direction: column;
+  }
+  
+  main{
+    margin-bottom: 80vh;
+  }
+  
+  form{
+    margin: auto;
+    max-width: 250px;
+    align-content: center;
+  }
+  
+  .form-list{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  
+  .form-list > li > label{
+    max-width: 220px;
+  }
+  
+  .form-list > li > label + *{
+    flex: 1 0 120px;
+  }
 
-header nav ul {
-    display: flex;
-    flex-direction: row;
-    padding-bottom: 0;
-}
+  h2{
+      padding-top: 10px;
+  }
 
-header nav ul li {
+  ul,li{
     list-style-type: none;
-}
-
-/* Set the size of the div element that contains the map */
-#map {
-    height: 400px;
-    /* The height is 400 pixels */
-    width: 100%;
-    /* The width is the width of the web page */
+    margin: 0;
+    padding: 0;
   }
 
-/* Groups & Items  (Desktop) */
-
-/*map style*/
-/* Set the size of the div element that contains the map */
-#map {
-    height: 400px;
-    /* The height is 400 pixels */
-    width: 100%;
-    /* The width is the width of the web page */
+  #location{
+    max-width: 120px;
+  }
+  
+  #search-radius{
+    max-width: 40px;
+  }
+  
+  .center{
+      justify-content: center;
+      text-align: center;
+      margin: auto;
+  }
+  
+  .place-container{
+    display: flex;
+    flex-flow: column;
+    
   }
 
-@media all and (max-width: 800px) {
+  .place-data{
+      flex: 1;
+      min-height: 250px;
 
-    section, h1 {
-        padding: 0 10%;
+  }
+
+
+    /*map style*/
+  /* Set the size of the div element that contains the map */
+
+  
+  button{
+    background-color:#74ad5a;
+      -webkit-border-top-left-radius:5px;
+      -moz-border-radius-topleft:5px;
+      border-top-left-radius:5px;
+      -webkit-border-top-right-radius:5px;
+      -moz-border-radius-topright:5px;
+      border-top-right-radius:5px;
+      -webkit-border-bottom-right-radius:5px;
+      -moz-border-radius-bottomright:5px;
+      border-bottom-right-radius:5px;
+      -webkit-border-bottom-left-radius:5px;
+      -moz-border-radius-bottomleft:5px;
+      border-bottom-left-radius:5px;
+    text-indent:0;
+      display:inline-block;
+      color:#ffffff;
+      font-family:arial;
+      font-size:15px;
+      font-weight:bold;
+      font-style:normal;
+    height:40px;
+      line-height:40px;
+    width:200px;
+      text-decoration:none;
+      text-align:center;
+  }.submit-button:hover {
+      background-color:#68a54b;
+  }.submit-button:active {
+      position:relative;
+      top:1px;
+  }
+
+  #next-button{
+      display: flex;
+  }
+  
+  h3{
+    font-size: 12pt;
+    font-weight: normal;
+  }
+  
+
+  
+  @media all and (min-width: 800px) {
+    .place-container{
+        display: flex;
+        flex-flow: row;
+        
     }
-
-    .group {
-        flex-direction: column;
-    }
-
-}
+  
+  }

@@ -9,9 +9,13 @@
         <meta name="viewport" content="width=device-width">
         <title>Museum Finder</title> <!--browser window title text-->
         <link href="main.css" rel="stylesheet" type="text/css" />
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1tEvB-iDEeyFXyjp2FC122VPDzXrWqcE&libraries=&v=weekly"
+            defer
+      ></script>
     </head>
     <body>
-        <header>
+        <header class="center">
             <h1>Museum Finder</h1>
             <p>
                 Find museums, aquariums, galleries, and zoos in your area!
@@ -19,19 +23,24 @@
         </header>
         <main>
             <form id="form">
-                <label for="location">Location</label>
-                <input type="text" id="location" name="location" placeholder="Arizona" required>
-                <label for="search-radius-kilometers">Search Radius (kilometers)</label>
-                <input type="number" id="search-radius" name="search-radius" min="1" max="50" value="3">
-                <button type="submit" id="submit-button" name="submit-button">Submit</button>
+              <ul class="center form-list">
+                <li>
+                  <label for="location">Location:</label>
+                  <input type="text" id="location" name="location" placeholder="Arizona" required>
+                </li>
+                <li>
+                  <label for="search-radius-kilometers">Search Radius (km):</label>
+                  <input type="number" id="search-radius" name="search-radius" min="1" max="50" value="3">
+                </li>
+                <li>
+                  <button type="submit" id="submit-button" name="submit-button" class="center">Search</button>
+                </li>
+              </ul>
             </form>
-        <!-- <div id="map"></div> -->
-
-
         </main>
         <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
         <script type="module" src="script.js"></script>
-        <footer>
+        <footer class="center">
             <h3>Data gathered from https://opentripmap.io</h3>
         </footer>
     </body>
