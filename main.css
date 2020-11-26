@@ -83,10 +83,6 @@ body {
 }
 
 
-    /*map style*/
-  /* Set the size of the div element that contains the map */
-
-  
   button{
     background-color:#74ad5a;
       border-top-left-radius:5px;
@@ -118,9 +114,6 @@ body {
   }
   
 
-  
-
-  
   @media all and (min-width: 800px) {
     .place-container{
         display: flex;
